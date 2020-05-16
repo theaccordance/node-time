@@ -1,3 +1,7 @@
-/build
-/node_modules
+.DS_Store
 .idea
+build/
+coverage/
+node_modules/
+
+yarn-error.log

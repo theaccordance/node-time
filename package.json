@@ -14,17 +14,30 @@
     "type": "git",
     "url": "git://github.com/TooTallNate/node-time.git"
   },
-  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://tootallnate.net)",
+  "author": "Joe Mainwaring <jm@theaccordance.com> (http://joemainwaring.com)",
   "license": "MIT",
   "contributors": [
     {
       "name": "Diogo Resende",
       "email": "dresende@thinkdigital.pt"
+    },
+    {
+      "name": "Nathan Rajlich",
+      "email": "nathan@tootallnate.net"
     }
   ],
-  "main": "./index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "test": "mocha --reporter spec"
+    "build": "tsc",
+    "build:check": "tsc --noEmit",
+    "build:clear": "rm -rf dist/*",
+    "nuke": "rm -rf node_modules/* dist/* coverage/*",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "bindings": "^1.2.0",
@@ -32,6 +45,24 @@
     "nan": "^2.2.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.2",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
