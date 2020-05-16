@@ -45,6 +45,9 @@
     "nan": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.2",
     "jest": "^26.0.1",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
